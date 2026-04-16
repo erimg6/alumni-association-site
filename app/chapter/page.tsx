@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { CalloutBand } from "@/components/CalloutBand";
+import { PageHero } from "@/components/PageHero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { UpdateCard } from "@/components/UpdateCard";
-import { externalLinks } from "@/lib/site-content";
+import { externalLinks, heroImages } from "@/lib/site-content";
 
 export const metadata = {
   title: "Chapter"
@@ -33,15 +35,37 @@ const chapterUpdates = [
 export default function ChapterPage() {
   return (
     <>
-      <section className="page-hero">
-        <p className="eyebrow">Chapter dashboard</p>
-        <h1>Public visibility without internal secrets.</h1>
-        <p>
-          Chapter updates should help alumni feel connected, confident donating, and aware of the work happening now.
-        </p>
+      <PageHero
+        eyebrow="Chapter dashboard"
+        title="Public visibility without internal secrets."
+        description="Chapter updates should help alumni feel connected, confident donating, and aware of the work happening now."
+        variant="chapter-hero"
+        actions={[
+          { label: "TODO: Submit an update", href: externalLinks.updateForm },
+          { label: "TODO: View Instagram", href: externalLinks.instagram, variant: "secondary" }
+        ]}
+      />
+
+      <section className="page-section two-column story-section">
+        <div>
+          <SectionHeader
+            eyebrow="Chapter dispatch"
+            title="Make the chapter feel current without making it private."
+            description="A strong chapter page should feel alive: a small number of verified moments, public-safe updates, and clear asks."
+          />
+          <p>
+            Use this page as an alumni-facing digest. The chapter can show momentum, service, and leadership without
+            exposing internal strategy, member-only details, or unapproved names.
+          </p>
+        </div>
+        <div className="media-collage">
+          {heroImages.slice(1, 4).map((image) => (
+            <Image key={image.src} src={image.src} alt={image.alt} width={520} height={360} />
+          ))}
+        </div>
       </section>
 
-      <section className="page-section">
+      <section className="page-section muted">
         <SectionHeader eyebrow="Chapter feed" title="Photos and updates alumni can understand quickly." />
         <div className="card-grid four">
           {chapterUpdates.map((update) => (
@@ -52,10 +76,11 @@ export default function ChapterPage() {
 
       <section className="page-section muted">
         <SectionHeader eyebrow="Operations snapshot" title="A simple dashboard for accountability." align="center" />
-        <div className="card-grid five">
+        <div className="dashboard-strip">
           {["Leadership overview", "Service initiatives", "Brotherhood events", "Recruitment efforts", "Awards and recognition"].map(
-            (item) => (
-              <article className="content-card" key={item}>
+            (item, index) => (
+              <article key={item}>
+                <span>0{index + 1}</span>
                 <h3>{item}</h3>
                 <p>TODO: Add a concise, public-safe summary for this category.</p>
               </article>

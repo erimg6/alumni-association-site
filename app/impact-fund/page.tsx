@@ -1,6 +1,7 @@
 import { DonationProgress } from "@/components/DonationProgress";
 import { DonationTierCard } from "@/components/DonationTierCard";
 import { DonorWall } from "@/components/DonorWall";
+import { PageHero } from "@/components/PageHero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { donationTiers } from "@/lib/donations";
 
@@ -11,16 +12,18 @@ export const metadata = {
 export default function ImpactFundPage() {
   return (
     <>
-      <section className="page-hero impact-hero">
-        <p className="eyebrow">PMD Impact Fund</p>
-        <h1>Recurring alumni support for chapter sustainability.</h1>
-        <p>
-          The PMD Impact Fund turns alumni goodwill into predictable support for operations, philanthropy, scholarships,
-          leadership development, and long-term chapter health.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="PMD Impact Fund"
+        title="Recurring alumni support for chapter sustainability."
+        description="The PMD Impact Fund turns alumni goodwill into predictable support for operations, philanthropy, scholarships, leadership development, and long-term chapter health."
+        variant="impact-hero"
+        actions={[
+          { label: "Choose a giving tier", href: "#giving-tiers" },
+          { label: "View transparency", href: "/finance", variant: "secondary" }
+        ]}
+      />
 
-      <section className="page-section two-column">
+      <section className="page-section two-column story-section">
         <div>
           <SectionHeader
             eyebrow="What it funds"
@@ -40,7 +43,7 @@ export default function ImpactFundPage() {
         <DonationProgress />
       </section>
 
-      <section className="page-section muted">
+      <section className="page-section muted" id="giving-tiers">
         <SectionHeader
           eyebrow="Monthly giving tiers"
           title="Choose a level of support."
@@ -59,14 +62,17 @@ export default function ImpactFundPage() {
           <SectionHeader eyebrow="Why monthly giving matters" title="Predictability is the point." />
           <div className="stacked-list">
             <article>
+              <span>01</span>
               <h3>Predictability</h3>
               <p>Chapter leaders can budget around recurring support instead of hoping a single appeal lands.</p>
             </article>
             <article>
+              <span>02</span>
               <h3>Alumni ownership</h3>
               <p>Small monthly gifts make more alumni part of the chapter's future, not just one-time observers.</p>
             </article>
             <article>
+              <span>03</span>
               <h3>Chapter longevity</h3>
               <p>Consistent support protects the programs and traditions that make Mu Sigma worth coming back to.</p>
             </article>
@@ -77,10 +83,11 @@ export default function ImpactFundPage() {
 
       <section className="page-section muted">
         <SectionHeader eyebrow="Transparency snapshot" title="Where support is intended to go." align="center" />
-        <div className="card-grid five">
+        <div className="ledger-grid">
           {["Chapter operations", "Philanthropy", "Scholarships", "Leadership development", "Sustainability reserve"].map(
-            (item) => (
-              <article className="content-card" key={item}>
+            (item, index) => (
+              <article className="ledger-item" key={item}>
+                <span>0{index + 1}</span>
                 <h3>{item}</h3>
                 <p>TODO: Replace this sample allocation note with board-approved language.</p>
               </article>

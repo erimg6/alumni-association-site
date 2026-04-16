@@ -1,4 +1,5 @@
 import { CalloutBand } from "@/components/CalloutBand";
+import { PageHero } from "@/components/PageHero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { alumniSpotlights, externalLinks } from "@/lib/site-content";
 
@@ -9,14 +10,16 @@ export const metadata = {
 export default function AlumniPage() {
   return (
     <>
-      <section className="page-hero">
-        <p className="eyebrow">Alumni network</p>
-        <h1>Reconnect alumni by giving them clear next steps.</h1>
-        <p>
-          This page previews spotlights, class connections, and future family tree features while keeping every personal
-          detail public-safe.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Alumni network"
+        title="Reconnect alumni by giving them clear next steps."
+        description="This page previews spotlights, class connections, and future family tree features while keeping every personal detail public-safe."
+        variant="alumni-hero"
+        actions={[
+          { label: "TODO: Join the Alumni Network", href: externalLinks.alumniNetwork },
+          { label: "TODO: Update your info", href: externalLinks.updateForm, variant: "secondary" }
+        ]}
+      />
 
       <CalloutBand
         eyebrow="Join the network"
@@ -27,10 +30,14 @@ export default function AlumniPage() {
       />
 
       <section className="page-section">
-        <SectionHeader eyebrow="Spotlights" title="Sample alumni stories" description="Replace these only after real alumni approve their names, class years, and stories." />
-        <div className="card-grid three">
+        <SectionHeader
+          eyebrow="Spotlights"
+          title="Sample alumni stories"
+          description="Replace these only after real alumni approve their names, class years, and stories."
+        />
+        <div className="spotlight-row">
           {alumniSpotlights.map((spotlight) => (
-            <article className="content-card" key={spotlight.name}>
+            <article className="content-card spotlight-card" key={spotlight.name}>
               <p className="eyebrow">{spotlight.classYear}</p>
               <h3>{spotlight.name}</h3>
               <p>{spotlight.description}</p>
@@ -47,11 +54,23 @@ export default function AlumniPage() {
             association decides what information is public, opt-in, and maintainable.
           </p>
         </div>
-        <article className="content-card lineage-preview">
-          <div>TODO: 2020</div>
-          <div>TODO: Big Brother</div>
-          <div>TODO: Little Brother</div>
-          <div>Filters: Year / Profession / Location</div>
+        <article className="network-map">
+          <div>
+            <span>Class</span>
+            <strong>TODO: 2020</strong>
+          </div>
+          <div>
+            <span>Big</span>
+            <strong>TODO: Big Brother</strong>
+          </div>
+          <div>
+            <span>Little</span>
+            <strong>TODO: Little Brother</strong>
+          </div>
+          <div>
+            <span>Filters</span>
+            <strong>Year / Profession / Location</strong>
+          </div>
         </article>
       </section>
     </>

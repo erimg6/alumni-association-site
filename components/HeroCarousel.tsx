@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { externalLinks, heroImages } from "@/lib/site-content";
+import { externalLinks, heroImages, heroProofPoints } from "@/lib/site-content";
 
 export function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -45,6 +45,15 @@ export function HeroCarousel() {
           <a className="button secondary on-dark" href={externalLinks.alumniNetwork}>
             TODO: Join the Alumni Network
           </a>
+        </div>
+        <p className="hero-meta">Public pages for giving, events, chapter updates, finance, newsletters, and governance.</p>
+        <div className="hero-proof" aria-label="Public site priorities">
+          {heroProofPoints.map((point) => (
+            <div key={point.label}>
+              <strong>{point.label}</strong>
+              <span>{point.description}</span>
+            </div>
+          ))}
         </div>
       </div>
       <div className="hero-dots" aria-label="Hero slide controls">

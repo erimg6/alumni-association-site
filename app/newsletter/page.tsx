@@ -1,4 +1,5 @@
 import { CalloutBand } from "@/components/CalloutBand";
+import { PageHero } from "@/components/PageHero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { externalLinks, newsletterIssues } from "@/lib/site-content";
 
@@ -9,13 +10,16 @@ export const metadata = {
 export default function NewsletterPage() {
   return (
     <>
-      <section className="page-hero">
-        <p className="eyebrow">Newsletter</p>
-        <h1>A central archive for alumni updates.</h1>
-        <p>
-          Give alumni one reliable place to find past issues, upcoming events, chapter wins, and Impact Fund progress.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Newsletter"
+        title="A central archive for alumni updates."
+        description="Give alumni one reliable place to find past issues, upcoming events, chapter wins, and Impact Fund progress."
+        variant="newsletter-hero"
+        actions={[
+          { label: "TODO: Sign up for updates", href: externalLinks.newsletterSignup },
+          { label: "TODO: Submit alumni news", href: externalLinks.updateForm, variant: "secondary" }
+        ]}
+      />
 
       <CalloutBand
         eyebrow="Signup"
@@ -29,9 +33,10 @@ export default function NewsletterPage() {
 
       <section className="page-section">
         <SectionHeader eyebrow="Archive" title="Sample issue archive" />
-        <div className="card-grid three">
-          {newsletterIssues.map((issue) => (
-            <article className="content-card" key={issue.title}>
+        <div className="issue-list">
+          {newsletterIssues.map((issue, index) => (
+            <article key={issue.title}>
+              <span>0{index + 1}</span>
               <p className="eyebrow">{issue.date}</p>
               <h3>{issue.title}</h3>
               <p>{issue.description}</p>
@@ -42,9 +47,10 @@ export default function NewsletterPage() {
 
       <section className="page-section muted">
         <SectionHeader eyebrow="Highlights" title="What each issue should cover" align="center" />
-        <div className="card-grid four">
-          {["Alumni spotlights", "Chapter wins", "Upcoming events", "Impact Fund updates"].map((item) => (
-            <article className="content-card" key={item}>
+        <div className="newsletter-slots">
+          {["Alumni spotlights", "Chapter wins", "Upcoming events", "Impact Fund updates"].map((item, index) => (
+            <article key={item}>
+              <span>0{index + 1}</span>
               <h3>{item}</h3>
               <p>TODO: Add a short recurring content slot for {item.toLowerCase()}.</p>
             </article>

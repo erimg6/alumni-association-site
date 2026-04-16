@@ -1,5 +1,6 @@
 import { DonationProgress } from "@/components/DonationProgress";
 import { DonorWall } from "@/components/DonorWall";
+import { PageHero } from "@/components/PageHero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { financeCategories } from "@/lib/site-content";
 
@@ -10,22 +11,29 @@ export const metadata = {
 export default function FinancePage() {
   return (
     <>
-      <section className="page-hero">
-        <p className="eyebrow">Financial transparency</p>
-        <h1>Show enough to build trust without exposing sensitive details.</h1>
-        <p>
-          The finance page should explain public allocation categories, progress toward annual goals, and donor
-          recognition rules.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Financial transparency"
+        title="Show enough to build trust without exposing sensitive details."
+        description="The finance page should explain public allocation categories, progress toward annual goals, and donor recognition rules."
+        variant="finance-hero"
+        actions={[
+          { label: "Support the Impact Fund", href: "/impact-fund" },
+          { label: "Read governance notes", href: "/about", variant: "secondary" }
+        ]}
+      />
 
-      <section className="page-section two-column">
+      <section className="page-section two-column ledger-shell">
         <div>
           <SectionHeader eyebrow="Overview" title="High-level allocation model" />
           <p>
             These categories are sample public budget buckets. Replace the percentages only after the association
             approves final reporting language.
           </p>
+          <div className="finance-rules">
+            <span>No private donor amounts</span>
+            <span>No customer IDs</span>
+            <span>Board-approved language only</span>
+          </div>
         </div>
         <DonationProgress compact />
       </section>
@@ -38,6 +46,9 @@ export default function FinancePage() {
               <div>
                 <h3>{category.label}</h3>
                 <p>{category.description}</p>
+                <div className="allocation-meter" aria-hidden="true">
+                  <span style={{ width: `${category.percent}%` }} />
+                </div>
               </div>
               <strong>{category.percent}%</strong>
             </article>

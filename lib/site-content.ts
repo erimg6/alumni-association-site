@@ -31,11 +31,49 @@ export const heroImages = [
   { src: "/hero-slide-5.jpeg", alt: "PMD Mu Sigma alumni community placeholder image" }
 ];
 
+export const heroProofPoints = [
+  { label: "Impact Fund", description: "Live giving tracker foundation" },
+  { label: "Events", description: "Public calendar placeholders" },
+  { label: "Chapter", description: "Updates without private data" },
+  { label: "Finance", description: "Transparent public summaries" }
+];
+
 export const impactStats = [
   { value: "TODO: 350+", label: "Alumni in the network" },
   { value: "TODO: $18,500", label: "Raised this year" },
   { value: "TODO: 1,200", label: "Service hours supported" },
   { value: "TODO: 12", label: "Scholarships or chapter initiatives funded" }
+];
+
+export const alumniPathways = [
+  {
+    eyebrow: "Give",
+    title: "Fund the next chapter year",
+    description: "Support service, scholarship-style awards, leadership development, and chapter sustainability.",
+    cta: "View the Impact Fund",
+    href: "/impact-fund"
+  },
+  {
+    eyebrow: "Attend",
+    title: "Show up where alumni gather",
+    description: "Find public events, PMD Open details, and save-the-date moments for the year ahead.",
+    cta: "Browse events",
+    href: "/events"
+  },
+  {
+    eyebrow: "Reconnect",
+    title: "Help the network get smarter",
+    description: "Share updated contact details, career notes, and mentorship interest once the team confirms the form.",
+    cta: "Join the network",
+    href: externalLinks.alumniNetwork
+  },
+  {
+    eyebrow: "Read",
+    title: "Stay current in five minutes",
+    description: "Follow chapter wins, alumni notes, governance updates, and practical calls for support.",
+    cta: "Read updates",
+    href: "/newsletter"
+  }
 ];
 
 export const updateCards = [

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PageHero } from "@/components/PageHero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { boardMembers } from "@/lib/site-content";
 
@@ -9,18 +10,20 @@ export const metadata = {
 export default function ExecutiveBoardPage() {
   return (
     <>
-      <section className="page-hero">
-        <p className="eyebrow">Executive Board</p>
-        <h1>Visible leadership gives alumni confidence.</h1>
-        <p>
-          Replace these sample bios only after real officers or board members approve names, photos, roles, and contact
-          information.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Executive Board"
+        title="Visible leadership gives alumni confidence."
+        description="Replace these sample bios only after real officers or board members approve names, photos, roles, and contact information."
+        variant="board-hero"
+        actions={[
+          { label: "Review governance", href: "/about" },
+          { label: "Contact the board", href: "mailto:TODO:alumni@musigma.org", variant: "secondary" }
+        ]}
+      />
 
       <section className="page-section">
         <SectionHeader eyebrow="Leadership" title="Current sample board" />
-        <div className="card-grid four">
+        <div className="board-grid">
           {boardMembers.map((member) => (
             <article className="content-card profile-card" key={member.email}>
               <Image src="/leader-placeholder.svg" alt="" width={180} height={180} />
@@ -33,8 +36,8 @@ export default function ExecutiveBoardPage() {
         </div>
       </section>
 
-      <section className="page-section muted two-column">
-        <article className="content-card">
+      <section className="page-section muted leadership-letter">
+        <article>
           <p className="eyebrow">President's Message</p>
           <h3>TODO: Vision, goals, and alumni ask</h3>
           <p>
@@ -42,7 +45,7 @@ export default function ExecutiveBoardPage() {
             can help.
           </p>
         </article>
-        <article className="content-card">
+        <article>
           <p className="eyebrow">Roles and responsibilities</p>
           <h3>Keep the org chart understandable.</h3>
           <p>

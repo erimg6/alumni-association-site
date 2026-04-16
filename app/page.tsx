@@ -1,3 +1,4 @@
+import { AlumniPathways } from "@/components/AlumniPathways";
 import { CalloutBand } from "@/components/CalloutBand";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { ImpactStats } from "@/components/ImpactStats";
@@ -9,7 +10,8 @@ export default function HomePage() {
   return (
     <>
       <HeroCarousel />
-      <section className="page-section">
+      <AlumniPathways />
+      <section className="page-section compact">
         <SectionHeader
           eyebrow="Immediate chapter visibility"
           title="A central hub for alumni who want to stay close and help wisely."
